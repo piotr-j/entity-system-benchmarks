@@ -3,6 +3,7 @@ package com.artemis.system;//
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
+import com.artemis.component.PlainPosition;
 import com.artemis.component.Position;
 import com.artemis.systems.VoidEntitySystem;
 
@@ -22,7 +23,7 @@ public final class CompositionManglerSystem extends VoidEntitySystem {
 
 	private Random rng;
 
-	ComponentMapper<Position> positionMapper;
+	ComponentMapper<PlainPosition> positionMapper;
 
 	@SuppressWarnings("unchecked")
 	public CompositionManglerSystem(long seed, int entityCount) {
@@ -52,9 +53,9 @@ public final class CompositionManglerSystem extends VoidEntitySystem {
 		for (int i = 0; RENEW > i; i++) {
 			Entity e = world.getEntity(ids[index++]);
 			if (positionMapper.has(e)) {
-				e.edit().remove(Position.class);
+				e.edit().remove(PlainPosition.class);
 			} else {
-				e.edit().create(Position.class);
+				e.edit().create(PlainPosition.class);
 			}
 			index = index % ENTITY_COUNT;
 		}

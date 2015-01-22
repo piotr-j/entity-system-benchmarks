@@ -22,7 +22,7 @@ public final class CompositionManglerSystem extends VoidEntitySystem {
 
 	private Random rng;
 
-	ComponentMapper<Position> positionMapper;
+	ComponentMapper<PlainPosition> positionMapper;
 
 	@SuppressWarnings("unchecked")
 	public CompositionManglerSystem(long seed, int entityCount) {
@@ -43,10 +43,10 @@ public final class CompositionManglerSystem extends VoidEntitySystem {
 	@Override
 	protected void initialize() {
 		addPosition = new EntityTransmuterFactory(world)
-				.add(Position.class)
+				.add(PlainPosition.class)
 				.build();
 		removePosition = new EntityTransmuterFactory(world)
-				.remove(Position.class)
+				.remove(PlainPosition.class)
 				.build();
 
 		for (int i = 0; ENTITY_COUNT > i; i++)
