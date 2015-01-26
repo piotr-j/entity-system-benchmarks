@@ -25,7 +25,7 @@ public class TransmuterBenchmark extends JmhSettings {
 	}		
 	
 	@Benchmark
-	public void baseline() {
+	public void entity_edit() {
 		world.process();
 	}
 

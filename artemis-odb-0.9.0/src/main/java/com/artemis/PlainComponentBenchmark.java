@@ -37,6 +37,7 @@ import com.artemis.system.PlainPositionSystem;
 import com.artemis.system.PlainPositionSystem2;
 import com.artemis.system.PlainPositionSystem3;
 import com.github.esfbench.JmhSettings;
+import org.openjdk.jmh.runner.options.TimeValue;
 
 public class PlainComponentBenchmark extends JmhSettings {
 	
@@ -61,7 +62,8 @@ public class PlainComponentBenchmark extends JmhSettings {
 		new Runner(
 			new OptionsBuilder()
 				.include(PlainComponentBenchmark.class.getName() + ".*")
-				.param("entityCount", "1024", "4096")
+				.measurementTime(TimeValue.seconds(5))
+				.param("entityCount", "1024", "4096", "16384")
 				.build())
 		.run();
 	}
